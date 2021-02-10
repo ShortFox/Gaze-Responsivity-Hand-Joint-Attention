@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-alpha/dist/katex.min.css" integrity="sha384-BTL0nVi8DnMrNdMQZG1Ww6yasK9ZGnUxL1ZWukXQ7fygA1py52yPp9W4wrR00VML" crossorigin="anonymous">
+        <style>
+/*--------------------------------------------------------------------------------------------- * Copyright (c) Microsoft Corporation. All rights reserved. * Licensed under the MIT License. See License.txt in the project root for license information. *--------------------------------------------------------------------------------------------*/ body { font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback"; font-size: 14px; padding: 0 26px; line-height: 22px; word-wrap: break-word; } #code-csp-warning { position: fixed; top: 0; right: 0; color: white; margin: 16px; text-align: center; font-size: 12px; font-family: sans-serif; background-color:#444444; cursor: pointer; padding: 6px; box-shadow: 1px 1px 1px rgba(0,0,0,.25); } #code-csp-warning:hover { text-decoration: none; background-color:#007acc; box-shadow: 2px 2px 2px rgba(0,0,0,.25); } body.scrollBeyondLastLine { margin-bottom: calc(100vh - 22px); } body.showEditorSelection .code-line { position: relative; } body.showEditorSelection .code-active-line:before, body.showEditorSelection .code-line:hover:before { content: ""; display: block; position: absolute; top: 0; left: -12px; height: 100%; } body.showEditorSelection li.code-active-line:before, body.showEditorSelection li.code-line:hover:before { left: -30px; } .vscode-light.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(0, 0, 0, 0.15); } .vscode-light.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(0, 0, 0, 0.40); } .vscode-light.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-dark.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 255, 255, 0.4); } .vscode-dark.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 255, 255, 0.60); } .vscode-dark.showEditorSelection .code-line .code-line:hover:before { border-left: none; } .vscode-high-contrast.showEditorSelection .code-active-line:before { border-left: 3px solid rgba(255, 160, 0, 0.7); } .vscode-high-contrast.showEditorSelection .code-line:hover:before { border-left: 3px solid rgba(255, 160, 0, 1); } .vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before { border-left: none; } img { max-width: 100%; max-height: 100%; } a { text-decoration: none; } a:hover { text-decoration: underline; } a:focus, input:focus, select:focus, textarea:focus { outline: 1px solid -webkit-focus-ring-color; outline-offset: -1px; } hr { border: 0; height: 2px; border-bottom: 2px solid; } h1 { padding-bottom: 0.3em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; } h1, h2, h3 { font-weight: normal; } h1 code, h2 code, h3 code, h4 code, h5 code, h6 code { font-size: inherit; line-height: auto; } table { border-collapse: collapse; } table > thead > tr > th { text-align: left; border-bottom: 1px solid; } table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, table > tbody > tr > td { padding: 5px 10px; } table > tbody > tr + tr > td { border-top: 1px solid; } blockquote { margin: 0 7px 0 5px; padding: 0 16px 0 10px; border-left-width: 5px; border-left-style: solid; } code { font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback"; font-size: 14px; line-height: 19px; } body.wordWrap pre { white-space: pre-wrap; } .mac code { font-size: 12px; line-height: 18px; } pre:not(.hljs), pre.hljs code > div { padding: 16px; border-radius: 3px; overflow: auto; } /** Theming */ pre code { color: var(--vscode-editor-foreground); } .vscode-light pre:not(.hljs), .vscode-light code > div { background-color: rgba(220, 220, 220, 0.4); } .vscode-dark pre:not(.hljs), .vscode-dark code > div { background-color: rgba(10, 10, 10, 0.4); } .vscode-high-contrast pre:not(.hljs), .vscode-high-contrast code > div { background-color: rgb(0, 0, 0); } .vscode-high-contrast h1 { border-color: rgb(0, 0, 0); } .vscode-light table > thead > tr > th { border-color: rgba(0, 0, 0, 0.69); } .vscode-dark table > thead > tr > th { border-color: rgba(255, 255, 255, 0.69); } .vscode-light h1, .vscode-light hr, .vscode-light table > tbody > tr + tr > td { border-color: rgba(0, 0, 0, 0.18); } .vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td { border-color: rgba(255, 255, 255, 0.18); } 
+</style>
+<style>
+/* Tomorrow Theme */ /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */ /* Original theme - https://github.com/chriskempson/tomorrow-theme */ /* Tomorrow Comment */ .hljs-comment, .hljs-quote { color: #8e908c; } /* Tomorrow Red */ .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: #c82829; } /* Tomorrow Orange */ .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: #f5871f; } /* Tomorrow Yellow */ .hljs-attribute { color: #eab700; } /* Tomorrow Green */ .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: #718c00; } /* Tomorrow Blue */ .hljs-title, .hljs-section { color: #4271ae; } /* Tomorrow Purple */ .hljs-keyword, .hljs-selector-tag { color: #8959a8; } .hljs { display: block; overflow-x: auto; color: #4d4d4c; padding: 0.5em; } .hljs-emphasis { font-style: italic; } .hljs-strong { font-weight: bold; }
+</style>
+<style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="tobiig2omh">tobii_g2om.h</h1>
+<p>The tobii_g2om.h header file collects the core API functions of the G2OM library. It contains functions to initialize the API and process data to get a most likely candidate result. There are also (unimplemented) functions for changing complexity of internal algorithms, changing eye configuration and setting max thread count.</p>
+<p>The API documentation includes example code snippets that show the use of each function, they don't necessarily describe the best practice in which to use the api. For more in-depth example of the best practices, see the samples that are supplied together with the G2OM library.</p>
+<h2 id="g2omcontextcreate">g2om_context_create()</h2>
+<h5 id="function">Function:</h5>
+<p>Initializes G2OM, with provided initial capacity of individual objects. It is possible to have multiple G2OM instances at one time.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_context_create</span><span class="hljs-params">( g2om_context** context, <span class="hljs-keyword">uint32_t</span> initial_capacity )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p>Before any other API function can be invoked with the exception of <code>g2om_get_version()</code> and <code>g2om_get_worldspace_corner_of_candidate()</code>, the API needs to be set up before use, by calling <code>g2om_context_create()</code>. The resulting <code>g2om_context</code> instance is passed explicitly to most functions. When creating an API instance, you also set the <code>initial_capacity</code> for storing object data internally.</p>
+<p><code>context</code> must be a pointer to a variable of the type <code>g2om_context*</code>, that is, a pointer to a <code>g2om_context</code> pointer. This variable will be filled in with a pointer to the created instance. <code>g2om_context</code> is an opaque type, and only its declaration is available in the API.</p>
+<p><code>initial_capacity</code> if exceeded will allocate double the exceeded value.</p>
+<h5 id="return-value">Return value:</h5>
+<p>If API instance creation was successful, <code>g2om_context_create()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>. If creation failed <code>g2om_context_create()</code> returns one of the following:</p>
+<ul>
+<li>
+<p><a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a><br>
+The <code>context</code> parameter was passed in as <code>NULL</code>.</p>
+</li>
+<li>
+<p><a href="#g2om-result"><code>G2OM_RESULT_INTERNAL_ERROR</code></a><br>
+Some unexpected internal error occured. This error should normally not be returned, so if it is please contact support.</p>
+</li>
+</ul>
+<h5 id="see-also">See also:</h5>
+<p><a href="#g2om-context-destroy"><code>g2om_context_destroy()</code></a></p>
+<h5 id="example">Example:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;assert.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+	g2om_context* context;
+	g2om_result result = g2om_context_create( &amp;context, <span class="hljs-number">50</span> );
+	assert( result == G2OM_RESULT_OK );
+	
+	result = g2om_context_destroy( &amp;context );
+	assert( result == G2OM_RESULT_OK );
+}
+</div></code></pre>
+<h2 id="g2omprocess">g2om_process()</h2>
+<h5 id="function">Function:</h5>
+<p>Takes gaze data, information about objects hit by raycasts and candidates (gaze aware objects) and sends back a result for each candidate.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_process</span><span class="hljs-params">( g2om_context* context, g2om_device_data* device_data, g2om_raycast_result* raycast_result, <span class="hljs-keyword">uint32_t</span> candidates_count, g2om_candidate* candidates, g2om_candidate_result* candidate_results )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p>G2OM does not do any kind of background processing. This means that in order to receive any results from the API, the user application needs to manually initiate the process, and this is done by calling <code>g2om_process()</code>.</p>
+<p>The recommended way to use <code>g2om_process()</code> is to call it directly from the users update loop before the result is needed and at the same rate as the user application will use it.</p>
+<p><code>context</code> must be a pointer to a valid <code>g2om_context</code> instance as created by calling <a href="#g2om-context-create"><code>g2om_context_create()</code></a>.</p>
+<p><code>device_data</code> must be a pointer to a valid <code>g2om_device_data</code> instance as created by the user.</p>
+<pre class="hljs"><code><div> <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_device_data 
+ {
+	<span class="hljs-keyword">float</span> timestamp_in_s;
+	g2om_gaze_ray combined_gaze_ray;
+	g2om_gaze_ray left_gaze_ray;
+	g2om_gaze_ray right_ray;
+ } g2om_device_data;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_gaze_ray 
+ {
+	g2om_ray ray;
+	<span class="hljs-keyword">uint8_t</span> is_valid;
+ } g2om_gaze_ray;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_ray
+ {
+	g2om_vector3 origin;
+	g2om_vector3 direction;
+ } g2om_ray;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_vector3
+ {
+	<span class="hljs-keyword">float</span> x;
+	<span class="hljs-keyword">float</span> y;
+	<span class="hljs-keyword">float</span> z;
+ } g2om_vector3;
+</div></code></pre>
+<p><code>raycast_result</code> must be a pointer to a valid <code>g2om_raycast_result</code> instance as created by the user.</p>
+<pre class="hljs"><code><div> <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_raycast_result
+ {
+	g2om_raycast combined_raycast;
+	g2om_raycast left_raycast;
+	g2om_raycast right_raycast;
+ } g2om_raycast_result;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_raycast
+ {
+	<span class="hljs-keyword">uint8_t</span> did_raycast_hit_a_candidate;
+	<span class="hljs-keyword">uint64_t</span> candidate_id;
+ } g2om_raycast;
+</div></code></pre>
+<p><code>candidates_count</code> must be a uint32_t designating the length of the <code>candidates</code> array.</p>
+<p><code>candidates</code> must be a pointer to a valid <code>g2om_candidate[]</code> instance as created by the user.</p>
+<pre class="hljs"><code><div> <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_candidate
+ {
+	<span class="hljs-keyword">uint64_t</span> id;
+	g2om_vector3 aabb_max_in_local_space;
+	g2om_vector3 aabb_min_in_local_space;
+	g2om_matrix4x4 world_to_local_matrix;
+	g2om_matrix4x4 local_to_world_matrix;
+ } g2om_candidate;
+ 
+  <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_vector3
+ {
+	<span class="hljs-keyword">float</span> x;
+	<span class="hljs-keyword">float</span> y;
+	<span class="hljs-keyword">float</span> z;
+ } g2om_vector3;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_matrix4x4
+ {
+	<span class="hljs-keyword">float</span> m00;
+	<span class="hljs-keyword">float</span> m10;
+	<span class="hljs-keyword">float</span> m20;
+	<span class="hljs-keyword">float</span> m30;
+	<span class="hljs-keyword">float</span> m01;
+	<span class="hljs-keyword">float</span> m11;
+	<span class="hljs-keyword">float</span> m21;
+	<span class="hljs-keyword">float</span> m31;
+	<span class="hljs-keyword">float</span> m02;
+	<span class="hljs-keyword">float</span> m12;
+	<span class="hljs-keyword">float</span> m22;
+	<span class="hljs-keyword">float</span> m32;
+	<span class="hljs-keyword">float</span> m03;
+	<span class="hljs-keyword">float</span> m13;
+	<span class="hljs-keyword">float</span> m23;
+	<span class="hljs-keyword">float</span> m33;
+ } g2om_matrix4x4;
+</div></code></pre>
+<p><code>candidate_results</code> must be a pointer to a valid <code>g2om_candidate_result[]</code> instance as created by the user, which will receive it's values from this function. <code>candidate_results</code> length <strong>MUST</strong> match <code>candidates</code> length.</p>
+<pre class="hljs"><code><div> <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_candidate_result
+ {
+	<span class="hljs-keyword">uint64_t</span> id;
+	<span class="hljs-keyword">float</span> score;
+	g2om_gaze_ray adjusted_combined_gaze_ray;
+	g2om_gaze_ray adjusted_left_gaze_ray;
+	g2om_gaze_ray adjusted_right_gaze_ray;
+ } g2om_candidate_result;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_gaze_ray 
+ {
+	g2om_ray ray;
+	<span class="hljs-keyword">uint8_t</span> is_valid;
+ } g2om_gaze_ray;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_ray
+ {
+	g2om_vector3 origin;
+	g2om_vector3 direction;
+ } g2om_ray;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_vector3
+ {
+	<span class="hljs-keyword">float</span> x;
+	<span class="hljs-keyword">float</span> y;
+	<span class="hljs-keyword">float</span> z;
+ } g2om_vector3;
+</div></code></pre>
+<p>Note that <code>candidate_results</code> and <code>candidates</code> <strong>HAS</strong> to match in length!<br>
+Failure to follow this requirement can lead to internal errors.</p>
+<h5 id="return-value">Return value:</h5>
+<p>If the process is successful, <code>g2om_process()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>.<br>
+If the call fails <code>g2om_process()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a> if any of the following parameter was passed in as <code>NULL</code>:</p>
+<p><code>context</code>, <code>device_data</code>, <code>raycast_result</code>, <code>candidates</code>, <code>candidate_results</code>.</p>
+<h5 id="see-also">See also:</h5>
+<p><a href="#g2om-context-create"><code>g2om_context_create()</code></a></p>
+<h5 id="example">Example:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;assert.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+	g2om_context* context;
+	g2om_result result = g2om_context_create( &amp;context, <span class="hljs-number">50</span> );
+	assert( result == G2OM_RESULT_OK );
+	
+	g2om_device_data device_data = get_device_data_from_tracker(); <span class="hljs-comment">// not shown in example</span>
+	
+	g2om_raycast_result raycast_result;
+	
+	raycast_result.combined_raycast = (g2om_raycast){
+		.did_raycast_hit_a_candidate = <span class="hljs-number">1</span>,	<span class="hljs-comment">// fill with data from raycasting in your game engine with combined gaze ray</span>
+		.candidate_id = <span class="hljs-number">123</span>					<span class="hljs-comment">// should only be valid if object hit was gazeaware/g2om_candidate</span>
+	};
+	
+	raycast_result.left_raycast = (g2om_raycast){
+		.did_raycast_hit_a_candidate = <span class="hljs-number">1</span>,	<span class="hljs-comment">// fill with data from raycasting in your game engine with left gaze ray</span>
+		.candidate_id = <span class="hljs-number">123</span>					<span class="hljs-comment">// should only be valid if object hit was gazeaware/g2om_candidate</span>
+	};
+	
+	raycast_result.right_raycast = (g2om_raycast){
+		.did_raycast_hit_a_candidate = <span class="hljs-number">1</span>,	<span class="hljs-comment">// fill with data from raycasting in your game engine with right gaze ray</span>
+		.candidate_id = <span class="hljs-number">123</span>					<span class="hljs-comment">// should only be valid if object hit was gazeaware/g2om_candidate</span>
+	};
+	
+	g2om_candidate candidates[<span class="hljs-number">50</span>];
+	<span class="hljs-keyword">uint32_t</span> candidate_count = get_candidates(candidates, <span class="hljs-number">50</span>); <span class="hljs-comment">// fill with candidates/objects from your game which should be gazeaware.</span>
+	
+	g2om_candidate_result candidate_results[<span class="hljs-number">50</span>];
+	<span class="hljs-keyword">uint32_t</span> result_count = get_empty_candidate_results(candidate_results, <span class="hljs-number">50</span>); <span class="hljs-comment">// this array has to be the same size as candidates.</span>
+	
+	assert(result_count == candidate_count);
+
+	result = g2om_process( context, &amp;device_data, &amp;raycast_result, candidate_count, &amp;candidates, &amp;candidates_result );
+	assert( result == G2OM_RESULT_OK );
+		
+	g2om_candidate winner = candidate_results[<span class="hljs-number">0</span>]; <span class="hljs-comment">// the results are sorted, so the first element is the highest scoring.</span>
+	
+	<span class="hljs-comment">// you might want to do an extra raycast here to determine if the winner is obscured, and if so pick the next in line.</span>
+	<span class="hljs-comment">// to help with this you can use winner-&gt;adjusted_combined_gaze_ray etc.</span>
+	
+	<span class="hljs-comment">// --&gt; use the results/winner here &lt;--</span>
+	
+	result = g2om_context_destroy( &amp;context );
+	assert( result == G2OM_RESULT_OK );
+}
+</div></code></pre>
+<h2 id="g2omcontextdestroy">g2om_context_destroy()</h2>
+<h5 id="function">Function:</h5>
+<p>Destroy the G2OM instance.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_context_destroy</span><span class="hljs-params">( g2om_context** context )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p>When creating an instance with <a href="#g2om-context-create"><code>g2om_context_create()</code></a>, some system resources are acquired. When finished using the API (typically during the shutdown process), <code>g2om_context_destroy()</code> should be called to destroy the instance and ensure that those resources are released.</p>
+<p><code>g2om_context_destroy()</code> should only be called if <a href="#g2om-context-create"><code>g2om_context_create()</code></a> completed successfully.</p>
+<p><code>context</code> must be a pointer to a pointer to a valid <code>g2om_context</code> instance, that is a pointer to a <code>g2om_context*</code>, as created by <a href="#g2om-context-create"><code>g2om_context_create()</code></a>.</p>
+<h5 id="return-value">Return value:</h5>
+<p>If the call was successful, <code>g2om_context_destroy()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>, otherwise it can return <a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a> if <code>context</code> parameter was passed in as <code>NULL</code>.</p>
+<h5 id="see-also">See also:</h5>
+<p><a href="#g2om-context-create"><code>g2om_context_create()</code></a></p>
+<h5 id="example">Example:</h5>
+<p>See <a href="#g2om-context-create"><code>g2om_context_create()</code></a></p>
+<h2 id="g2omsetcomplexity">g2om_set_complexity()</h2>
+<p><strong>NOT IMPLEMENTED</strong></p>
+<h5 id="function">Function:</h5>
+<p>Sets the time complexity to be used by the G2OM instance.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_set_complexity</span><span class="hljs-params">( g2om_context* context, g2om_complexity* complexity )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p>G2OM can be configured to run at different time complexity levels during runtime. The time complexity may affect the performance of G2OM in memory and cpu cycles it will use, and how accurate the result will be.</p>
+<p>Time complexity can be set to any of the following enums:</p>
+<ul>
+<li><code>G2OM_COMPLEXITY_HIGH</code><br>
+The recommended level if the resource budget can handle it, will give the most accurate results.</li>
+<li><code>G2OM_COMPLEXITY_LOW</code><br>
+Will utilize G2OM but at a limited level, may not give as accurate results as <code>G2OM_COMPLEXITY_HIGH</code>.</li>
+<li><code>G2OM_COMPLEXITY_NONE</code><br>
+Will be similar to using a single raycast. Recommended to be used if resource budget is limited.</li>
+</ul>
+<p>By default G2OM uses the time complexity <code>G2OM_COMPLEXITY_HIGH</code>.</p>
+<h5 id="return-value">Return value:</h5>
+<p>If the call was successful, <code>g2om_set_complexity()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>, otherwise it can return <a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a> if <code>context</code> or <code>complexity</code> parameter was passed in as <code>NULL</code>.<br>
+Until it's implemented it will return <a href="#g2om-result"><code>G2OM_RESULT_NOT_IMPLEMENTED_ERROR</code></a>.</p>
+<h5 id="see-also">See also:</h5>
+<p><a href="#g2om-context-create"><code>g2om_context_create()</code></a>, <a href="#g2om-process"><code>g2om_process()</code></a></p>
+<h5 id="example">Example:</h5>
+<p>TODO</p>
+<h2 id="g2omseteyeconfiguration">g2om_set_eye_configuration()</h2>
+<p><strong>NOT IMPLEMENTED</strong></p>
+<h5 id="function">Function:</h5>
+<p>Sets which eye configuration to use.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_set_eye_configuration</span><span class="hljs-params">( g2om_context* context, g2om_eye_configuration* eye_configuration )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p>G2OM can be configured to run with different eye configurations. It is only recommended to change this configuration if the eyetracker has a problem tracking one of the eyes of the user using the eyetracker.</p>
+<p>Eye configuration can be set to any of the following enums:</p>
+<ul>
+<li><code>G2OM_EYE_CONFIGURATION_BOTH_EYES</code></li>
+<li><code>G2OM_EYE_CONFIGURATION_ONLY_LEFT</code></li>
+<li><code>G2OM_EYE_CONFIGURATION_ONLY_RIGHT</code></li>
+</ul>
+<p>By default G2OM uses the configuration <code>G2OM_EYE_CONFIGURATION_BOTH_EYES</code>.</p>
+<h5 id="return-value">Return value:</h5>
+<p>If the call was successful, <code>g2om_set_eye_configuration()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>, otherwise it can return <a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a> if <code>context</code> or <code>eye_configuration</code> parameter was passed in as <code>NULL</code>.<br>
+Until it's implemented it will return <a href="#g2om-result"><code>G2OM_RESULT_NOT_IMPLEMENTED_ERROR</code></a>.</p>
+<h5 id="see-also">See also:</h5>
+<p><a href="#g2om-context-create"><code>g2om_context_create()</code></a>, <a href="#g2om-process"><code>g2om_process()</code></a></p>
+<h5 id="example">Example:</h5>
+<p>TODO</p>
+<h2 id="g2omsetmaxthreadcount">g2om_set_max_thread_count()</h2>
+<p><strong>NOT IMPLEMENTED</strong></p>
+<h5 id="function">Function:</h5>
+<p>Sets how many threads G2OM is allowed to use internally during a call to <a href="#g2om-process"><code>g2om_process()</code></a>.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_set_max_thread_count</span><span class="hljs-params">( g2om_context* context, g2om_thread_count* thread_count )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p>G2OM by default uses multiple threads during <a href="#g2om-process"><code>g2om_process()</code></a> to improve calculation time. If you want to control how G2OM manages it's threads you can change it.</p>
+<p>Thread count can be set to any of the following enums:</p>
+<ul>
+<li><code>G2OM_THREAD_COUNT_ONE_THREAD</code></li>
+<li><code>G2OM_THREAD_COUNT_TWO_THREADS</code></li>
+<li><code>G2OM_THREAD_COUNT_THREE_THREADS</code></li>
+<li><code>G2OM_THREAD_COUNT_FOUR_THREADS</code></li>
+</ul>
+<p>By default G2OM uses the thread count <code>G2OM_THREAD_COUNT_TWO_THREADS</code>.</p>
+<h5 id="return-value">Return value:</h5>
+<p>If the call was successful, <code>g2om_set_max_thread_count()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>, otherwise it can return <a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a> if <code>context</code> or <code>thread_count</code> parameter was passed in as <code>NULL</code>.<br>
+Until it's implemented it will return <a href="#g2om-result"><code>G2OM_RESULT_NOT_IMPLEMENTED_ERROR</code></a>.</p>
+<h5 id="see-also">See also:</h5>
+<p><a href="#g2om-context-create"><code>g2om_context_create()</code></a>, <a href="#g2om-process"><code>g2om_process()</code></a></p>
+<h5 id="example">Example:</h5>
+<p>TODO</p>
+<h2 id="g2omgetversion">g2om_get_version()</h2>
+<h5 id="function">Function:</h5>
+<p>Get the current version of the API.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_get_version</span><span class="hljs-params">( g2om_version* version )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p><code>g2om_get_version()</code> can be used to query the version of the tobii_g2om dll currently used.</p>
+<p><code>version</code> is a pointer to a <code>g2om_version</code> variable to receive the current version numbers.</p>
+<pre class="hljs"><code><div> <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_version
+ {
+	<span class="hljs-keyword">uint32_t</span> major; <span class="hljs-comment">// incremented for API changes which are not backward-compatible.</span>
+	<span class="hljs-keyword">uint32_t</span> minor; <span class="hljs-comment">// incremented for releases which add new, but backward-compatible, API features.</span>
+	<span class="hljs-keyword">uint32_t</span> build_version; <span class="hljs-comment">// incremented every time a new build is done, even when there are no changes.</span>
+ } g2om_version;
+</div></code></pre>
+<h5 id="return-value">Return value:</h5>
+<p>If the call was successful, <code>g2om_get_version()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>, otherwise it can return <a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a> if <code>version</code> parameter was passed in as <code>NULL</code>.</p>
+<h5 id="example">Example:</h5>
+<p>TODO</p>
+<h2 id="g2omgetworldspacecornerofcandidate">g2om_get_worldspace_corner_of_candidate()</h2>
+<h5 id="function">Function:</h5>
+<p>Transforms the corner points of the provided candidate's AABB to worldspace, and output the result in the two vectors given.</p>
+<h5 id="syntax">Syntax:</h5>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;tobii/tobii_g2om.h&gt;</span></span>
+<span class="hljs-function">g2om_result <span class="hljs-title">g2om_get_worldspace_corner_of_candidate</span><span class="hljs-params">( g2om_candidate* candidate, g2om_vector3 max_in_worldspace, g2om_vector3 min_in_worldspace )</span></span>;
+</div></code></pre>
+<h5 id="remarks">Remarks:</h5>
+<p><code>g2om_get_worldspace_corner_of_candidate()</code> can be used to debug. It's use is to make sure that the matrices used to transform to and from worldspace are correct.</p>
+<p><code>candidate</code> must be a pointer to a valid <code>g2om_candidate</code> instance as created by the user.</p>
+<pre class="hljs"><code><div> <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_candidate
+ {
+	<span class="hljs-keyword">uint64_t</span> id;
+	g2om_vector3 aabb_max_in_local_space;
+	g2om_vector3 aabb_min_in_local_space;
+	g2om_matrix4x4 world_to_local_matrix;
+	g2om_matrix4x4 local_to_world_matrix;
+ } g2om_candidate;
+ 
+  <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_vector3
+ {
+	<span class="hljs-keyword">float</span> x;
+	<span class="hljs-keyword">float</span> y;
+	<span class="hljs-keyword">float</span> z;
+ } g2om_vector3;
+ 
+ <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_matrix4x4
+ {
+	<span class="hljs-keyword">float</span> m00;
+	<span class="hljs-keyword">float</span> m10;
+	<span class="hljs-keyword">float</span> m20;
+	<span class="hljs-keyword">float</span> m30;
+	<span class="hljs-keyword">float</span> m01;
+	<span class="hljs-keyword">float</span> m11;
+	<span class="hljs-keyword">float</span> m21;
+	<span class="hljs-keyword">float</span> m31;
+	<span class="hljs-keyword">float</span> m02;
+	<span class="hljs-keyword">float</span> m12;
+	<span class="hljs-keyword">float</span> m22;
+	<span class="hljs-keyword">float</span> m32;
+	<span class="hljs-keyword">float</span> m03;
+	<span class="hljs-keyword">float</span> m13;
+	<span class="hljs-keyword">float</span> m23;
+	<span class="hljs-keyword">float</span> m33;
+ } g2om_matrix4x4;
+</div></code></pre>
+<p>The parameters <code>max_in_worldspace</code> and <code>min_in_worldspace</code> are both pointers to a valid <code>g2om_vector3</code> instance to receive values from calling <code>g2om_get_worldspace_corner_of_candidate()</code>.</p>
+<pre class="hljs"><code><div>  <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> g2om_vector3
+ {
+	<span class="hljs-keyword">float</span> x;
+	<span class="hljs-keyword">float</span> y;
+	<span class="hljs-keyword">float</span> z;
+ } g2om_vector3;
+</div></code></pre>
+<p><code>max_in_worldspace</code> will be filled with the value of <code>g2om_candidate-&gt;aabb_max_in_local_space</code> transformed into worldspace with the matrix <code>g2om_candidate-&gt;local_to_world_matrix</code>.</p>
+<p><code>min_in_worldspace</code> will be filled with the value of <code>g2om_candidate-&gt;aabb_min_in_local_space</code> transformed into worldspace with the matrix <code>g2om_candidate-&gt;local_to_world_matrix</code>.</p>
+<h5 id="return-value">Return value:</h5>
+<p>If the call was successful, <code>g2om_get_worldspace_corner_of_candidate()</code> returns <a href="#g2om-result"><code>G2OM_RESULT_OK</code></a>, otherwise it can return <a href="#g2om-result"><code>G2OM_RESULT_NULLPOINTER_PASSED_ERROR</code></a> if any of the parameters was passed in as <code>NULL</code>.</p>
+<h5 id="see-also">See also:</h5>
+<ul>
+<li></li>
+</ul>
+<h5 id="example">Example:</h5>
+<p>TODO</p>
+<h1 id="g2omresult">g2om_result</h1>
+<h5 id="function">Function:</h5>
+<p><code>g2om_result</code> is an enum that gets returned by all functions with the result of running that function.</p>
+<p><code>g2om_result</code> looks like this:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span>
+{
+	G2OM_RESULT_OK = <span class="hljs-number">0</span>,
+	G2OM_RESULT_NULLPOINTER_PASSED_ERROR = <span class="hljs-number">-1</span>,
+	G2OM_RESULT_INTERNAL_ERROR = <span class="hljs-number">-10</span>,
+	G2OM_RESULT_NOT_IMPLEMENTED_ERROR = <span class="hljs-number">-1000</span>,
+} g2om_result;
+</div></code></pre>
+
+    </body>
+    </html>

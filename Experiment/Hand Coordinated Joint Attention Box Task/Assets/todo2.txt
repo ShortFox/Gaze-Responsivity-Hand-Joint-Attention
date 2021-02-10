@@ -1,0 +1,5 @@
+Fix Mirror So that it is high resolution.
+
+Look through column headers make sure everything is good
+
+Also look through "Target Location" and "B1, B2, and B3 value meanings"

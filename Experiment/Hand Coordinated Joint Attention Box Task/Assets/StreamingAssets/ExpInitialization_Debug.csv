@@ -1,0 +1,9 @@
+TaskName,TrialID,TargetLocation,RoleA,B1_val_A,B2_val_A,B3_val_A,RoleB,B3_val_B,B2_val_B,B1_val_B
+solo_saccade,1,1,,,,,,,,
+solo_saccade,2,1,,,,,,,,
+solo_point,1,1,,,,,,,,
+solo_point,2,1,,,,,,,,
+joint,1,1,Responder,1,2,4,Initiator,6,2,4
+joint,2,1,Responder,2,1,3,Initiator,6,4,2
+joint,28,1,Initiator,6,2,4,Responder,1,2,4
+joint,29,1,Initiator,6,4,2,Responder,2,1,3

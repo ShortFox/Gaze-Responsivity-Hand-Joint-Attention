@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ConnectScreen.unity
+    guid: 8c37b367c6ce77b4482dfeca58d23a5e
+  - enabled: 0
+    path: Assets/Scenes/Debug/NetworkAvatars.unity
+    guid: 96a4e6d7ac23fc943883df6ef150e44f
+  - enabled: 0
+    path: Assets/Scenes/Debug/Avatar_Test.unity
+    guid: 7efae97569647a748819c799dac86872
+  - enabled: 0
+    path: Assets/Scenes/Debug/ServerCommunication_Debug.unity
+    guid: 36f71be54cd0cff4986342042e8e351c
+  - enabled: 1
+    path: Assets/Scenes/ExperimentRoom.unity
+    guid: 68f29d5aa16e6ad48b7805ec741653ad

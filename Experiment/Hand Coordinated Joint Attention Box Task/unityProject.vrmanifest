@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.tobiivrdemo.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\UnityProjects\\Patrick Nalepka\\Joint Gaze Autism with Eyetracking\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Tobii VR Demo [Testing]"
+        }
+      }
+    }
+  ]
+}
